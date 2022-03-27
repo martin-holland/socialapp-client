@@ -4,6 +4,8 @@ import {
   UNLIKE_CHIRP,
   LOADING_DATA,
   DELETE_CHIRP,
+  POST_CHIRP,
+  SET_CHIRP,
 } from "../types";
 
 const initialState = {
@@ -26,12 +28,20 @@ export default function (state = initialState, action) {
         chirps: action.payload,
         loading: false,
       };
+    case SET_CHIRP:
+      return {
+        ...state,
+        chirp: action.payload,
+      };
     case LIKE_CHIRP:
     case UNLIKE_CHIRP:
       let index = state.chirps.findIndex(
         (chirp) => chirp.chirpId === action.payload.chirpId
       );
       state.chirps[index] = action.payload;
+      if (state.chirp.chirpId === action.payload.chirpId) {
+        state.chirp = action.payload;
+      }
       return {
         ...state,
       };
@@ -42,6 +52,11 @@ export default function (state = initialState, action) {
       state.chirps.splice(index2, 1);
       return {
         ...state,
+      };
+    case POST_CHIRP:
+      return {
+        ...state,
+        chirps: [action.payload, ...state.chirps],
       };
     default:
       return state;

@@ -27,6 +27,7 @@ const styles = {
   },
   button: {
     marginTop: 20,
+    marginBottom: 20,
     position: "relative",
   },
   textField: {
@@ -39,6 +40,9 @@ const styles = {
   },
   progress: {
     position: "absolute",
+  },
+  smallInfo: {
+    marginTop: 20,
   },
 };
 

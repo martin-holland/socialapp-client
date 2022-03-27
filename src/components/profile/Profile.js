@@ -22,7 +22,7 @@ import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 
 // Redux imports
 import { connect } from "react-redux";
-import { logoutUser, uploadImage } from "../redux/actions/userActions";
+import { logoutUser, uploadImage } from "../../redux/actions/userActions";
 
 const styles = (theme) => ({
   paper: {

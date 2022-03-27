@@ -17,7 +17,7 @@ import EditIcon from "@material-ui/icons/Edit";
 
 // Redux stuff
 import { connect } from "react-redux";
-import { editUserDetails } from "../redux/actions/userActions";
+import { editUserDetails } from "../../redux/actions/userActions";
 
 const styles = {
   form: {

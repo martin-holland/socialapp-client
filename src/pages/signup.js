@@ -26,7 +26,8 @@ const styles = {
     margin: "10px auto 10px auto",
   },
   button: {
-    marginTop: 20,
+    marginTop: 10,
+    marginBottom: 10,
     position: "relative",
   },
   textField: {
@@ -167,7 +168,7 @@ export class signup extends Component {
             <small className={classes.smallInfo}>
               Already have an account? Login
               <Link to="/login">
-                <em>here</em>
+                <em> here</em>
               </Link>
             </small>
           </form>
