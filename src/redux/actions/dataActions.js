@@ -102,7 +102,7 @@ export const postChirp = (newChirp) => (dispatch) => {
 
 export const getChirp = (chirpId) => (dispatch) => {
   dispatch({ type: LOADING_UI });
-  console.log("chirpId instead getChirp/dataActions: ", chirpId);
+  console.log("passing to getChirp: ", chirpId);
   axios
     .get(`chirp/${chirpId}`)
     .then((res) => {

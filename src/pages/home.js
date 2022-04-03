@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import Chirp from "../components/chirp/Chirp";
 import Profile from "../components/profile/Profile";
+import ChirpSkeleton from "../util/ChirpSkeleton";
 
 import { connect } from "react-redux";
 import { getChirps } from "../redux/actions/dataActions";
@@ -19,7 +20,7 @@ export class home extends Component {
     let recentChirpsMarkup = !loading ? (
       chirps.map((chirp) => <Chirp key={chirp.chirpId} chirp={chirp} />)
     ) : (
-      <p>Loading...</p>
+      <ChirpSkeleton />
     );
 
     return (

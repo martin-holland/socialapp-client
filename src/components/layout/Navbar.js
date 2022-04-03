@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import MyButton from "../../util/MyButton";
 import PostChirp from "../chirp/PostChirp";
+// import Notifications from "./Notifications";
 
 // Redux imports
 import { connect } from "react-redux";
@@ -31,9 +32,7 @@ export class Navbar extends Component {
                   <HomeIcon color="secondary" />
                 </MyButton>
               </Link>
-              <MyButton tip="Notifications">
-                <Notifications color="secondary" />
-              </MyButton>
+              <Notifications />
             </>
           ) : (
             <>
