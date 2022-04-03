@@ -5,6 +5,8 @@ import MyButton from "../../util/MyButton";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import LikeButton from "./LikeButton";
+import Comments from "./Comments";
+import CommentForm from "./CommentForm";
 
 // MUI Imports
 import Dialog from "@material-ui/core/Dialog";
@@ -20,13 +22,9 @@ import ChatIcon from "@material-ui/icons/Chat";
 
 // Redux Imports
 import { connect } from "react-redux";
-import { getChirp } from "../../redux/actions/dataActions";
+import { getChirp, clearErrors } from "../../redux/actions/dataActions";
 
 const styles = {
-  invisibleSeparator: {
-    border: "none",
-    margin: 4,
-  },
   profileImage: {
     maxWidth: 200,
     height: 200,
@@ -54,13 +52,31 @@ const styles = {
 class ChirpDialog extends Component {
   state = {
     open: false,
+    oldPath: "",
+    newPath: "",
   };
+
+  componentDidMount() {
+    if (this.props.openDialog) {
+      this.handleOpen();
+    }
+  }
+
   handleOpen = () => {
-    this.setState({ open: true });
+    let oldPath = window.location.pathname;
+
+    const { userHandle, chirpId } = this.props;
+    const newPath = `/users/${userHandle}/chirp/${chirpId}`;
+
+    window.history.pushState(null, null, newPath);
+
+    this.setState({ open: true, oldPath, newPath });
     this.props.getChirp(this.props.chirpId);
   };
   handleClose = () => {
+    window.history.pushState(null, null, this.state.oldPath);
     this.setState({ open: false });
+    this.props.clearErrors();
   };
   render() {
     const {
@@ -73,6 +89,7 @@ class ChirpDialog extends Component {
         commentCount,
         userImage,
         userHandle,
+        comments,
       },
       UI: { loading },
     } = this.props;
@@ -108,6 +125,9 @@ class ChirpDialog extends Component {
           </MyButton>
           <span>{commentCount} comments</span>
         </Grid>
+        <hr className={classes.visibleSeparator} />
+        <CommentForm chirpId={chirpId} />
+        <Comments comments={comments} />
       </Grid>
     );
 
@@ -143,6 +163,7 @@ class ChirpDialog extends Component {
 }
 
 ChirpDialog.propTypes = {
+  clearErrors: PropTypes.func.isRequired,
   getChirp: PropTypes.func.isRequired,
   chirpId: PropTypes.string.isRequired,
   userHandle: PropTypes.string.isRequired,
@@ -157,6 +178,7 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
   getChirp,
+  clearErrors,
 };
 
 export default connect(
