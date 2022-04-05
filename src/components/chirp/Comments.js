@@ -16,6 +16,10 @@ const styles = {
   },
   commentData: {
     marginLeft: 20,
+    padding: 10,
+  },
+  commentDiv: {
+    marginLeft: 40,
   },
 };
 
@@ -29,7 +33,7 @@ class Comments extends Component {
           return (
             <Fragment key={createdAt}>
               <Grid item sm={12}>
-                <Grid container>
+                <Grid className={classes.commentDiv} container>
                   <Grid item sm={2}>
                     <img
                       src={userImage}
@@ -37,7 +41,7 @@ class Comments extends Component {
                       className={classes.commentImage}
                     />
                   </Grid>
-                  <Grid item sm={9}>
+                  <Grid className={classes.commentDiv} item sm={9}>
                     <div className={classes.commentData}>
                       <Typography
                         variant="h5"

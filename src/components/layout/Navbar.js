@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import MyButton from "../../util/MyButton";
 import PostChirp from "../chirp/PostChirp";
-// import Notifications from "./Notifications";
+import Notifications from "./Notifications";
 
 // Redux imports
 import { connect } from "react-redux";
@@ -15,7 +15,7 @@ import Button from "@material-ui/core/Button";
 
 // Icons
 import HomeIcon from "@material-ui/icons/Home";
-import Notifications from "@material-ui/icons/Notifications";
+import NotificationIcon from "@material-ui/icons/Notifications";
 
 export class Navbar extends Component {
   render() {

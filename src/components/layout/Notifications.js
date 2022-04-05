@@ -77,9 +77,9 @@ class Notifications extends Component {
                 component={Link}
                 color="default"
                 variant="body1"
-                to={`/users/${not.recipient}/scream/${not.screamId}`}
+                to={`/users/${not.recipient}/chirp/${not.chirpId}`}
               >
-                {not.sender} {verb} your scream {time}
+                {not.sender} {verb} your chirp {time}
               </Typography>
             </MenuItem>
           );
